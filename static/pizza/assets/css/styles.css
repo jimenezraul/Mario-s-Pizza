@@ -1,0 +1,102 @@
+.order-now {
+  font-size: 30px;
+  border-radius: 50px;
+  font-family: 'Archivo Black';
+  border: 2px solid rgb(220, 53, 70);
+}
+
+.order-now:hover {
+  font-size: 30px;
+  border-radius: 50px;
+  font-family: 'Archivo Black';
+  border: 2px solid rgb(220, 53, 70);
+}
+
+.button-col {
+  height: 100%;
+}
+
+.bg-red {
+  background-color: rgb(109, 1, 14);
+  min-height: 500px;
+}
+
+.menu-icon {
+  width: 100%;
+  border-radius: 25px;
+}
+
+.order-bg-image {
+  background-image: url(../../assets/img/ivan-torres-MQUqbmszGGM-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 90vh;
+}
+
+.service {
+  font-family: 'Archivo Black';
+  font-weight: 840000;
+}
+
+.bg-pizza-color {
+  background-color: rgb(255, 191, 41);
+  border-top: 2px solid rgb(220, 53, 70);
+}
+
+.min-height-400 {
+  min-height: 400px;
+}
+
+.button-red {
+  border: 2px solid rgb(255, 255, 255);
+  font-family: 'Archivo Black';
+}
+
+.button-red:hover {
+  border: 2px solid rgb(163, 3, 0);
+  background-color: rgb(163, 3, 0);
+}
+
+.sandwiches-section {
+  background-image: url(../../assets/img/amirali-mirhashemian-pFWQcon7T_E-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+}
+
+.sandwiches-section h1 {
+  font-family: 'Archivo Black';
+}
+
+.sandwich-choices {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+}
+
+.pizza-choices {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+}
+
+.active {
+  color: black!important;
+  opacity: 1;
+}
+
+.messages {
+  top: 5px;
+  right: 0px;
+}
+
+.fa-minus-square, .fa-plus-square {
+  background-color: transparent!important;
+  color: white;
+  padding: 0 5px;
+}
+
+.botton {
+  background-color: transparent!important;
+  border: 0;
+}

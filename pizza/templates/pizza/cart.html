@@ -1,0 +1,87 @@
+{% extends 'pizza/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center order-bg-image">
+    <div class="container">
+        <div class="row justify-content-end pizza-choices mt-5 mb-5">
+            <div class="col-12 pizza-h1">
+                <h1 class="text-center text-white pt-3 pb-3">Order</h1>
+            </div>
+            <div class="col-12 mt-4">
+                <div class="col-12 border-bottom pb-4">
+                    <div class="row border-bottom">
+                        <div class="col-3">
+                            <h5 class="text-center text-white">QTY</h5>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="text-center text-white">Size</h5>
+                        </div>
+                        <div class="col-3">
+                            <h5 class="text-center text-white">Description</h5>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="text-center text-white">Price</h5>
+                        </div>
+                    </div>
+                    {% if items %}
+                    {% for item in items %}
+                    <div class="row mt-4 align-items-center">
+                        <div class="col-3">
+                            <h6 class="text-center text-white">
+                                <a href="{{ item.get_update_up}}"><i class="fas fa-plus-square"></i></a>
+                                {{item.quantity}}
+                                <a href="{{item.get_update_down}}"><i class="fas fa-minus-square"></i></a>
+                            </h6>
+                        </div>
+                        <div class="col-2">
+                            <h6 class="text-center text-white">{{item.size}}</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="text-center text-white">{% if item.sandwich and item.combo %}{{item.sandwich}} {{item.combo}} {% else %} {{item.crust}} {{item.pizza.name}} {% endif %}</h6>
+                        </div>
+                        <div class="col-2">
+                            <h6 class="text-center text-white">${{item.get_total_price|floatformat:2}}</h6>
+                        </div>
+                        <div class="col-2">
+                            <form action="{{item.get_remove_from_cart_url}}" class="text-center">
+                                <button class="btn" type="submit"><i
+                                        class="mb-1 text-white fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6 class="text-center text-white">Your Cart is empty!</h6>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-4">
+                <div class="d-flex flex-column justify-content-center align-items-end col-12 pb-4">
+                    <div class="text-right col-auto mb-2">
+                        <h3 class="text-light pt-3 pizza-h border-bottom">Order Total</h3>
+                        {% if items %}
+                        <p class="text-white">item(s) subTotal: ${{order.get_sub_total|floatformat:2}}</p>
+                        <p class="text-white">Delivery fee: ${{ order.get_delivery|floatformat:2 }}</p>
+                        <p class="text-white border-bottom">Tax: ${{ order.get_tax|floatformat:2 }}</p>
+                        <h3 class="text-light pizza-h">${{ order.get_total|floatformat:2 }}</h3>
+                        {% else %}
+                        <p class="text-white">item(s) subTotal: $0.00</p>
+                        <p class="text-white">Delivery fee: $0.00</p>
+                        <p class="text-white border-bottom">Tax: $0.00</p>
+                        <h3 class="text-light pizza-h">$0.00</h3>
+                        {% endif %}
+
+                    </div>
+                    <div class="col-auto"><button class="btn btn-warning btn-block" type="button">Proceed to
+                            Checkout</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

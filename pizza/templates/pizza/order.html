@@ -1,0 +1,131 @@
+{% extends 'pizza/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center order-bg-image">
+    <div class="container">
+        <div class="row pizza-choices mt-5 mb-5">
+            <div class="col-12 pizza-h1">
+                <h1 class="text-center text-white pt-3 pb-3 border-bottom">Pizzas</h1>
+            </div>
+            {% for pizza in pizza_choice %}
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-4">
+                <div class="d-flex col-12 pb-4">
+                    <div class="col-12 mb-2">
+                        <form action="{% url 'pizzeria:add-to-cart' pizza.slug %}" class="site-form shadow"
+                            method="post">
+                            {% csrf_token %}
+                            <h3 class="text-light pt-3 pizza-h">{{ pizza.name }}</h3>
+                            <select class="custom-select badge-pill pl-3" name="crust_type" id="id_crust_type">
+                                <option value="Hand Tossed Pizza" selected="">Hand Tossed Pizza</option>
+                                <option value="Thin 'N Crispy">Thin 'N Crispy</option>
+                                <option value="Original Pan">Original Pan</option>
+                                <option value="Original Stuffed Crust">Original Stuffed Crust</option>
+                            </select>
+                            <select class="custom-select mt-2 badge-pill pl-3" name="size" id="id_size">
+                                <option value="Small">Small</option>
+                                <option value="Medium" selected="">Medium</option>
+                                <option value="Large">Large</option>
+                            </select>
+                            <button class="btn btn-block text-white badge-pill mt-2 button-red"
+                                type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center align-items-center align-content-center sandwiches-section">
+    <div class="container">
+        <div class="row align-items-center sandwich-choices mt-5 mb-5">
+            <div class="col-12">
+                <h1 class="text-center text-white pt-3 pb-3 border-bottom">Sandwiches</h1>
+            </div>
+            {% for sandwich in sandwich_choice %}
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-4">
+                <div class="d-flex col-12 pb-4">
+                    <div class="col-12 mb-2">
+                        <form action="{{sandwich.get_add_to_cart_url}}" class="site-form shadow" method="post">
+                            {% csrf_token %}
+                            <h3 class="text-light pt-3 pizza-h">{{sandwich.name}}</h3>
+                            <select name="combo" class="custom-select badge-pill pl-3" id="id_combo">
+                                <option value="Meal" selected="">Meal</option>
+                                <option value="Sandwich">Sandwich</option>
+                            </select>
+                            <select name="size" class="custom-select mt-2 badge-pill pl-3" id="id_size">
+                                <option value="Small">Small</option>
+                                <option value="Medium" selected="">Medium</option>
+                                <option value="Large">Large</option>
+                            </select>
+                            <button class="btn btn-block text-white badge-pill mt-2 button-red"
+                                type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="d-flex justify-content-center align-items-center align-content-center wings-section">
+    <div class="container">
+        <div class="row align-items-center sandwich-choices mt-5 mb-5">
+            <div class="col-12 wings-h1">
+                <h1 class="text-center text-white pt-3 pb-3 border-bottom">Wings</h1>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-4">
+                <div class="d-flex col-12 border-bottom pb-4">
+                    <div class="col-12 mb-2">
+                        <h3 class="text-light pt-3 pizza-h">BBQ Wings</h3><select
+                            class="custom-select mt-2 badge-pill pl-3" name="Sandwich" value="sandwich">
+                            <option value="8piece" selected="">8 Piece</option>
+                            <option value="12piece">12 Piece</option>
+                            <option value="large">18 Piece</option>
+                        </select>
+                        <button class="btn btn-block text-white badge-pill mt-2 button-red" type="button">Add</button>
+                    </div>
+                </div>
+                <div class="d-flex col-12 pb-4">
+                    <div class="col-12 mb-2">
+                        <h3 class="text-light pt-3 pizza-h">Hot Wings</h3><select
+                            class="custom-select mt-2 badge-pill pl-3" name="Sandwich" value="sandwich">
+                            <option value="8piece" selected="">8 Piece</option>
+                            <option value="12piece">12 Piece</option>
+                            <option value="large">18 Piece</option>
+                        </select>
+                        <button class="btn btn-block text-white badge-pill mt-2 button-red" type="button">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-4">
+                <div class="d-flex col-12 border-bottom pb-4">
+                    <div class="col-12 mb-2">
+                        <h3 class="text-light pt-3 pizza-h">HoneyBBQ Wings</h3><select
+                            class="custom-select mt-2 badge-pill pl-3" name="Sandwich" value="sandwich">
+                            <option value="8piece" selected="">8 Piece</option>
+                            <option value="12piece">12 Piece</option>
+                            <option value="large">18 Piece</option>
+                        </select>
+                        <button class="btn btn-block text-white badge-pill mt-2 button-red" type="button">Add</button>
+                    </div>
+                </div>
+                <div class="d-flex col-12 pb-4">
+                    <div class="col-12 mb-2">
+                        <h3 class="text-light pt-3 pizza-h"><strong>Bone-Out Wings</strong></h3><select
+                            class="custom-select mt-2 badge-pill pl-3" name="Sandwich" value="sandwich">
+                            <option value="8piece" selected="">8 Piece</option>
+                            <option value="12piece">12 Piece</option>
+                            <option value="large">18 Piece</option>
+                        </select>
+                        <button class="btn btn-block text-white badge-pill mt-2 button-red" type="button">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+{% endblock %}
