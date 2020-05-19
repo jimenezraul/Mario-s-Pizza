@@ -8,11 +8,13 @@ class PizzaForm(forms.ModelForm):
         model = models.Pizza
         fields = ["crust_type", "size"]
 
+
 class SandwichForm(forms.ModelForm):
 
     class Meta:
         model = models.Sandwiches
         fields = ["combo", "size"]
+
 
 class ItemsForm(forms.ModelForm):
 

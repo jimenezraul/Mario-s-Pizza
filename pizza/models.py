@@ -49,7 +49,6 @@ class Pizza(models.Model):
         })
 
 
-
 class Sandwiches(models.Model):
 
     COMBO = [
